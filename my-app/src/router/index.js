@@ -2,9 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from "../pages/home"
 import Classify from "../pages/classify"
-import Community from "../pages/community"
+import ShopCart from "../pages/shopCart"
 import Main from "../pages/main"
-import Ball from "../pages/ball"
+import Guang from "../pages/guang"
 
 Vue.use(Router)
 
@@ -21,14 +21,14 @@ export default new Router({
       component:Classify
     },
     {
-      path:"/ball",
-      name:"Ball",
-      component:Ball
+      path:"/guang",
+      name:"Guang",
+      component:Guang
     },
     {
-      path:"/community",
-      name:"Community",
-      component:Community
+      path:"/shopCart",
+      name:"ShopCart",
+      component:ShopCart
     },
     {
       path:"/main",
@@ -36,7 +36,7 @@ export default new Router({
       component:Main
     },
     {
-      path:"/*",
+      path: '/*',
       redirect:"/home"
     }
   ]

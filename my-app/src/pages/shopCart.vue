@@ -1,19 +1,18 @@
 <template>
   <div>
-    首页
-    <BottomBar></BottomBar>
+    购物车
   </div>
 </template>
 
 <script>
+import Swiper from "swiper"
 import BottomBar from "../components/bottomBar/bottomBar"
 export default {
-  components:{
+  components: {
       BottomBar
   }
 };
 </script>
 
 <style scoped>
-
 </style>

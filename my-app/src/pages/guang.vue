@@ -1,17 +1,17 @@
 <template>
-  <div>
-    首页
-    <BottomBar></BottomBar>
-  </div>
+    <div>
+        逛
+        <BottomBar></BottomBar>
+    </div>
 </template>
 
 <script>
 import BottomBar from "../components/bottomBar/bottomBar"
 export default {
-  components:{
+    components: {
       BottomBar
   }
-};
+}
 </script>
 
 <style scoped>

@@ -5,8 +5,11 @@
 </template>
 
 <script>
+import BottomBar from "../components/bottomBar/bottomBar"
 export default {
-    
+    components: {
+      BottomBar
+  }
 }
 </script>
 
