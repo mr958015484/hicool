@@ -11,14 +11,14 @@
     <!-- 表单部分 -->
       <div class="container">
           <!-- 子组件配合槽口实现切换 -->
-        <Logitem v-if="lgway"  ptext="请输入邮箱验证码"  @logpao2="titfun">  
+        <Logitem v-if="lgway"  ptext="请输入验证码" ntext="请输入手机号" @logpao2="titfun">  
           <span slot="slota" class="iconfont icon-shouji-copy"></span>
           <span slot="slotb" class="iconfont icon-yanzhengma"></span>
           <span slot="slotc" class="code-txt" v-if="code" @click="timefun()" >获取验证码</span>
           <input  v-else-if="timestr!=''" type="text" slot="slotc" class="code-txt inputbox"  v-model="timestr"/>
         </Logitem>
 
-        <Logitem v-else ptext="请输入密码" :intype="str" @logpao1="titfun">  
+        <Logitem v-else ptext="请输入密码" ntext="请输入用户名/邮箱" :intype="str" @logpao1="titfun">  
           <span slot="slota" class="iconfont icon-shouji-copy"></span>
           <span slot="slotb" class="iconfont icon-mm"></span>
           <span slot="slotc" class="iconfont icon-mimabukejian" v-if="icostyle" @click="changeIco()"></span>
@@ -29,7 +29,7 @@
           <!-- 登录方式切换 -->
         <div class="login-way">
           <p v-if="lgway" @click="changeWay()">账号密码登录</p>
-          <p v-else  @click="changeWay()">邮箱验证码登录</p>
+          <p v-else  @click="changeWay()">手机验证码登录</p>
           <p>忘记密码？</p>
         </div>
       </div>
@@ -44,11 +44,11 @@ import Titbox from "../components/loginAndreg/titbox"
 export default {
   data(){
     return{
-      lgway:true,  //控制登录方式 lgway:true----邮箱验证码登陆    lgway:false----邮箱密码登陆  
+      lgway:false,  //控制登录方式 lgway:true----手机验证码登陆    lgway:false----邮箱密码登陆  
       icostyle:true,  //控制密码可见、不可见
       str:"password",    //控制密码框类型
-      code:true, //控制获取验证码
-      m:10,       //验证码倒计时长
+      code:true,     //控制获取验证码
+      m:10,          //验证码倒计时长
       timestr:"",    //验证码倒计时框显示与否
       titbool:false,  //控制登陆提示信息显示与否
       titcon:""       //控制登陆提示内容
@@ -91,7 +91,7 @@ export default {
      },1000)
     },
     titfun(val){  //控制登录信息提示框
-     console.log("log",val);
+     //console.log("log",val);
       this.titbool = val.tit;
       this.titcon = val.content;
       setTimeout(()=>{

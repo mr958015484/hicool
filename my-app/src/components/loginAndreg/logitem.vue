@@ -2,11 +2,11 @@
   <div class="form-table">
     <div class="input-list">
         <span class="icon-img"><slot name="slota"></slot></span>
-        <input type="text" placeholder="请输入邮箱" v-model="inemail">
+        <input type="text" :placeholder="ntext" v-model="inname">
     </div>
     <div class="input-list">
         <span class="icon-img"><slot name="slotb"></slot></span>
-        <input :type="intype" :placeholder="ptext" v-model="incode">
+        <input :type="intype" :placeholder="ptext" v-model="inpwd">
         <span class="icon-tit"><slot name="slotc"></slot></span>
     </div>
      
@@ -19,73 +19,64 @@
 export default {
     data(){
         return{
-            inemail:"",  //登陆输入的邮箱
-            incode:""     //登陆输入的邮箱验证码或密码
+            inname:"",  //登陆输入的邮箱或用户名
+            inpwd:""     //登陆输入的邮箱验证码或密码
         }
     },
     props:{
         ptext:String,   //placeholder提示信息：请输入邮箱验证码/密码
+        ntext:String,   //登陆用户名提示
         intype:String  //密码框类型 type=text 密码可见，type=password 密码不可见
     },
     methods: {
         loginSubmit(){
-            console.log(this.ptext);
+            //console.log(this.ptext);
             //1.校验邮箱
             var regEmail = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
             var flemail = false;//标记登陆输入的邮箱验证是否通过
-            flemail = regEmail.test(this.inemail)?true:false;
+            flemail = regEmail.test(this.inname)?true:false;
 
-            //2.密码校验
+            //2.用户名校验
+            var regName =/^[a-zA-Z][a-zA-Z0-9]{5,19}$/;
+            var flname = false;//标记用户名验证是否通过
+            flname = regName.test(this.inname)?true:false;
+
+            //3.密码校验
             var regPwd = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/;
             var flpwd = false;//标记登陆输入的密码是否合法
+            flpwd = regPwd.test(this.inpwd)?true:false;
 
-            // 3.邮箱验证码校验
-            var flcode =  false;//标记验证码是否一致
+            if(this.ptext=="请输入密码"){   //登陆方式1：用户名/邮箱、密码登陆————数据库查找用户信息
 
-            if(this.ptext=="请输入密码"){   //登陆方式1：邮箱、密码登陆————数据库查找用户信息
-                flpwd = regPwd.test(this.incode)?true:false;
-                if(!flemail){
-                    this.$emit("logpao1",{tit:true,content:"登陆邮箱格式错误"});
-                }else if(!flpwd){
-                    this.$emit("logpao1",{tit:true,content:"邮箱或密码有错误，请重新输入"});
-                }else{   //将用户输入的登陆信息发送，在数据库查找匹配信息
+                if((flemail || flname) && flpwd){ //将用户输入的登陆信息发送，在数据库查找匹配信息
                     var paramlog = new URLSearchParams();
-                    paramlog.append("email",this.inemail);
-                    paramlog.append("pwd",this.incode);
+                    
+                    if(flemail){  //邮箱登陆
+                    paramlog.append("email",this.inname);
+                    paramlog.append("pwd",this.inpwd);
+                    console.log("邮箱登陆")
+                    }else { //用户名登录
+                    paramlog.append("uname",this.inname);
+                    paramlog.append("pwd",this.inpwd);   
+                    console.log("用户名登录")
+                    }
                     this.axios({
-                        url:"",  //存储用户信息接口！！！！！！！！！！！！！！
+                        url:"",  //保存用户注册信息的地址！！！！！！！！！！！！！
                         method:"post",
                         data:paramlog
                     }).then((ok)=>{
-                        // 1.用户名与密码一致，登陆成功
+                        // 1.用户名或邮箱 与密码一致，登陆成功
                         // 2.用户名存在，密码不一致，密码有误
                         // 3.用户名不存在，邮箱或密码有错误，请重新输入
-                    })
+                    }) 
+                }else if(!flpwd){
+                    this.$emit("logpao1",{tit:true,content:"账号或密码有错误，请重新输入"});
+                }else{  
+                    this.$emit("logpao1",{tit:true,content:"用户名或邮箱格式错误"});
                 } 
-            }else{         
-                //登陆方式2：邮箱、邮箱验证码登陆————验证邮箱验证码是否一致
-                this.axios({   
-                    url:"",  //获取生成验证码的地址！！！！！！！！！！！！！！！！！！！！！！
-                    method:"get"
-                }).then((ok)=>{
-                    // flcode=(this.incode==xxx)?true:false;
-                })
-                if(!flemail){
-                    this.$emit("logpao2",{tit:true,content:"登陆邮箱格式错误"});
-                }else if(!flcode){
-                     this.$emit("logpao2",{tit:true,content:"邮箱验证码有误"});
-                }else {
-                    //使用邮箱验证码登录成功  将用户邮箱存入用户信息库，密码为空
-                    var paramshort = new URLSearchParams();
-                    paramshort.append("email",this.inemail);
-                    this.axios({
-                    url:"",  //保存用户注册信息的地址！！！！！！！！！！！！！
-                    method:"post",
-                    data:paramshort
-                    }).then((regstr)=>{
-                        // 登录成功
-                    })
-                }
+            }else{    
+                //登陆方式2：手机号、手机验证码登陆 ，暂不考虑 
+                this.$emit("logpao2",{tit:true,content:"请使用账号密码登陆"});
             }
         }
     }

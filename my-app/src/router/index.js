@@ -8,6 +8,7 @@ import Guang from "../pages/guang"
 import Login from "../pages/login"
 import Reg from "../pages/reg"
 
+import Myorder from "../pages/myorder"
 
 Vue.use(Router)
 
@@ -47,6 +48,11 @@ export default new Router({
       path:"/reg",
       name:"Reg",
       component:Reg
+    },
+    {
+      path:"/myorder",
+      name:"Myorder",
+      component:Myorder
     },
     {
       path: '/*',

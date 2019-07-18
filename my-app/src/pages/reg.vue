@@ -7,10 +7,8 @@
     </div>
     <!-- 注册信息部分 -->
     <Regitem :mtype="str" @zipao="funtit">
-        <span v-if="code" slot="slota" class="code-txt"  @click="timefun()">获取验证码</span>
-        <input v-else-if="timestr!=''" type="text" slot="slota" class="code-txt inputbox"  v-model="timestr"/>
-        <span v-if='icostyle' slot="slotb" class="iconfont icon-mimabukejian" @click="changeIco()"></span>
-        <span v-else slot="slotb" class="iconfont icon-mimakejian" @click="changeIco()"></span>
+        <span v-if='icostyle' slot="slota" class="iconfont icon-mimabukejian" @click="changeIco()"></span>
+        <span v-else slot="slota" class="iconfont icon-mimakejian" @click="changeIco()"></span>
     </Regitem>
     <!-- 底部信息 -->
     <div class="bottom-part">
@@ -33,9 +31,6 @@ export default {
     return{
       icostyle:true,  //控制密码可见、不可见
       str:"password",  //控制密码框类型
-      code:true,    //控制获取验证码
-      m:10,       //验证码倒计时长
-      timestr:"",    //验证码倒计时框显示与否
       titbool:false,  //控制注册提示信息框显示与否
       titcon:""       //控制注册提示内容
     }
@@ -55,23 +50,6 @@ export default {
       }else{
         this.str="text"; 
       } 
-    },
-    timefun(){
-      //验证码倒计时
-      this.m=10;
-      this.code=!this.code;
-      let colock =null;
-      clearInterval(colock);
-      colock=window.setInterval(()=>{
-       if(this.m==0){
-        clearInterval(colock);
-        this.code=!this.code;
-        this.timestr="";
-      }else{
-        this.timestr=this.m+"S 后重新获取";
-        this.m--;
-      }
-     },1000)
     },
     funtit(val){  //控制提示框
       //console.log("bb",val);
@@ -111,23 +89,6 @@ export default {
   position:absolute;
   right:.1rem;
   bottom:.1rem;
-}
-.code-txt{
-  display:block;
-  width:.6rem;
-  font-size:.08rem;
-  color:#fff;
-  padding:.05rem;
-  background-color:#b0b0b0;
-  border-radius:.12rem;
-}
-.container .inputbox{
-  font-size:.12rem;
-  border:none;
-  height:.16rem;
-  border-radius:.12rem;
-  padding:.05rem;
-  text-align: center;
 }
  /* 底部信息 */
 .bottom-part{
