@@ -7,6 +7,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import {store} from "./store/store"
 import axios from "axios"
+import './assets/font_log/iconfont.css'  //字体图标
 
 
 Vue.prototype.axios=axios
