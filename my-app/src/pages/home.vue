@@ -1,7 +1,9 @@
 <template>
   <div>
     首页
+    
     <BottomBar></BottomBar>
+
   </div>
 </template>
 

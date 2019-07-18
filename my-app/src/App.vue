@@ -30,9 +30,13 @@ ul,ol,li{
 }
 a{
 	text-decoration: none;
+	display:block;
 }
 img{
 	border: none;
+	display:block;
+}
+span{
 	display:block;
 }
 </style>

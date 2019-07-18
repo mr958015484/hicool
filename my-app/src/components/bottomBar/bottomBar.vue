@@ -32,22 +32,24 @@ export default {
         }
 	},
 	methods: {
-		fun(id){
-			var oP = document.getElementsByTagName("p");
-			var oImg = document.getElementsByClassName("bottomPic");
-			for(var i=0; i<oP.length; i++){
-				oP[i].style.color="#b0b0b0";
-				oImg[i].src=this.arr[i].imgurl;
-			}
-			oP[id].style.color="#414141";
-			oImg[id].src=this.arr2[id].imgurl;
-			if(id!=0){
-				oImg[0].src=this.arr2[0].imgurl;
-			}else{
-				oImg[0].src=this.arr[0].imgurl;
-			}
-		}
-	},
+        fun(id){
+            var oP = document.getElementsByTagName("p");
+            var oImg = document.getElementsByClassName("bottomPic");
+            for(var i=0; i<oP.length; i++){
+                oP[i].style.color="#b0b0b0";
+                oImg[i].src=this.arr[i].imgurl;
+            }if(id==0 || id ==1 || id==2){
+                oP[id].style.color="#414141";
+                oImg[id].src=this.arr2[id].imgurl;
+            }
+            if(id ==1 || id==2){
+                oImg[0].src=this.arr2[0].imgurl;
+            }else if(id==0){
+                oImg[0].src=this.arr[0].imgurl;
+            }
+        }
+    },
+
 }
 </script>
 
