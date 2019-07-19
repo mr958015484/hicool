@@ -1,6 +1,6 @@
 <template>
     <div class="top_bar">
-        <img @click="fungoback()" class="arrow" src="../../../static/fayimg/leftarrow.png" >
+        <i class="iconfont icon-fanhui2" @click="fungoback()"></i>
         <span class="per_center">{{word}}</span>
         <img class="home" src="../../../static/fayimg/home.png" >
     </div>
@@ -10,10 +10,16 @@
 export default {
     props:{
         word:String,
+        type:String
     },
     methods:{
         fungoback(){
-            this.$router.go(-1)
+            if(this.type=="myorder"){
+                this.$router.push("/main");
+            }else{
+                this.$router.go(-1);
+            }
+           
         }
     }
 }
@@ -37,7 +43,11 @@ export default {
          margin-left:.74rem;
      }
     .home{
-        margin-left:1.02rem;
+        margin-left:1.2rem;
     }
-    
+    .icon-fanhui2{
+        color:#fff;
+        font-size:.26rem;
+        padding:.14rem 0 0 .2rem;
+    }
 </style>

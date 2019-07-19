@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        
+        <Topbar word="我的订单" type="myorder"></Topbar>
         <div class="main-content">
             <div class="router-menu">
                 <router-link to="/myorder/orderall" class="item">全部</router-link>
@@ -15,9 +15,10 @@
     </div>
 </template>
 <script>
-
+import Topbar from "../topbar"
 export default {
     components:{
+        Topbar
     },
     created(){
         //接收路由传参过来的登陆状态,未登录踢到登陆页面
@@ -28,16 +29,19 @@ export default {
 
 <style scoped>
 .container{
+    margin-top:.5rem;
     background:#f0f0f0;
 }
 .main-content{
-   
+    display:-webkit-flex;
+    flex-direction:column;
+    overflow-y:auto;
+    background:#f0f0f0;
 }
 .router-menu{
     display:-webkit-flex;
     border-top:.01rem solid #e0e0e0;
     border-bottom:.01rem solid #e0e0e0;
-    margin-top: .1rem;
     background: #fff;
 } 
 .item{

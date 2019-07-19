@@ -39,4 +39,5 @@ img{
 span{
 	display:block;
 }
+
 </style>

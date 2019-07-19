@@ -93,7 +93,7 @@ export default new Router({
         name:"Ordertake",
         component:Ordertake
         },
-        {path:"/*",
+        {path:"/myorder/*",
         redirect:"/myorder/orderall"
         }
       ]

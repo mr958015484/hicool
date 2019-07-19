@@ -42,9 +42,7 @@ export default {
 </script>
 
 <style scoped>
-.container{
-   background:#f0f0f0; 
-}
+
 /* 有订单 */
 .order-list{
     margin-top: .3rem;

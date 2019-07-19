@@ -49,8 +49,5 @@ export default {
 </script>
 
 <style scoped>
-.outer-content{
-    background:#fff;
-}
 
 </style>

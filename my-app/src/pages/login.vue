@@ -3,7 +3,7 @@
     <!-- 头部 -->
       <div class="header">
         <div class="header-inner">
-            <i class="iconfont icon-goback" @click="backfun()">＜</i>
+            <i class="iconfont icon-goback" @click="backfun()"></i>
             <a href="#/reg">注册</a>
         </div>
       </div>
@@ -60,7 +60,7 @@ export default {
   },
   methods:{
     backfun(){
-      this.$router.go(-1); //登陆界面回退，待定
+      this.$router.push("/main"); //登陆界面回退
     },
     changeWay(){
       this.lgway=!this.lgway;

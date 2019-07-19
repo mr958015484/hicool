@@ -2,7 +2,7 @@
   <div class="container">
     <!-- 头部标题 -->
     <div class="top-title">
-        <i class="iconfont icon-fanhui" @click="loginfun()">＜</i>
+        <i class="iconfont icon-goback" @click="loginfun()"></i>
         <span>注册</span>
     </div>
     <!-- 注册信息部分 -->
