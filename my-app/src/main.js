@@ -11,6 +11,8 @@ import './assets/font/iconfont.css'
 // 冯慧引入省市级联动的插件
 import VDistpicker from 'v-distpicker'
 Vue.component('v-distpicker', VDistpicker);
+import './assets/font_log/iconfont.css'  //字体图标
+
 
 Vue.prototype.axios=axios
 
@@ -22,7 +24,7 @@ require("./mock")
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: { App},
   template: '<App/>',
   render: h => h(App),
   store

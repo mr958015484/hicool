@@ -1,13 +1,17 @@
 <template>
     <div class="not_login_head">
-        <div class="login_box">
+        <div class="login_box" @click="funLogin()">
             <span>登录</span><span>/</span><span>注册</span>
         </div>
     </div>
 </template>
 <script>
 export default {
-    
+    methods:{
+        funLogin(){
+            this.$router.push("/login");
+        }
+    }
 }
 </script>
 <style scoped>

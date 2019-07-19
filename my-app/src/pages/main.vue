@@ -3,13 +3,13 @@
         <!-- 顶部棒 -->
         <Topbar class="top_bar" word="个人中心"></Topbar>
         <!-- 没登录的时候的头部 -->
-        <!-- <Notlogin></Notlogin> -->
-        <Loginhead></Loginhead>
+        <Notlogin></Notlogin>
+        <!-- <Loginhead></Loginhead> -->
         <!-- 默认购物频道 -->
         <Listbar class="first_list" title="默认购物频道" >
             <span slot="contslot" >男士MEN</span>  
         </Listbar>
-        <Listbar class="first_list" title="我的订单">
+        <Listbar class="first_list" title="我的订单" @click.native="toOrder()">
              <span slot="contslot" >全部订单</span>
         </Listbar>
        <div class="cont_list">
@@ -73,7 +73,14 @@ export default {
       Notlogin,
       Loginhead,
       Listbar,
-     
+  },
+  methods:{
+      toOrder(){
+          //判断登陆状态1.未登录，踢到登陆界面
+          //this.$router.push("/login");
+          //2.登陆跳转至/myorder!!!!!!!!!!!!
+          this.$router.push("/myorder");
+      }
   }
 }
 </script>

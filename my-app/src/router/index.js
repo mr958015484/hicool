@@ -8,6 +8,14 @@ import Guang from "../pages/guang"
 import Basicinfo from "../pages/basicinfo"
 import Location from "../pages/location"
 import Newaddress from "../pages/newaddress"
+import Login from "../pages/login"
+import Reg from "../pages/reg"
+
+import Myorder from "../components/mine/myorder/myorder"
+import Orderall from "../components/mine/myorder/orderall/orderall"
+import Orderpay from "../components/mine/myorder/orderall/orderpay"
+import Orderdeliver from "../components/mine/myorder/orderall/orderdeliver"
+import Ordertake from "../components/mine/myorder/orderall/ordertake"
 
 Vue.use(Router)
 
@@ -54,7 +62,42 @@ export default new Router({
       name:"Newaddress",
       component:Newaddress,
     },
-    
+    {
+      path:"/login",
+      name:"Login",
+      component:Login
+    },
+    {
+      path:"/reg",
+      name:"Reg",
+      component:Reg
+    },
+    {
+      path:"/myorder",
+      name:"Myorder",
+      component:Myorder,
+      children:[
+        {path:"/myorder/orderall",
+        name:"Orderall",
+        component:Orderall
+        },
+        {path:"/myorder/orderpay",
+        name:"Orderpay",
+        component:Orderpay
+        },
+        {path:"/myorder/orderdeliver",
+        name:"Orderdeliver",
+        component:Orderdeliver
+        },
+        {path:"/myorder/ordertake",
+        name:"Ordertake",
+        component:Ordertake
+        },
+        {path:"/*",
+        redirect:"/myorder/orderall"
+        }
+      ]
+    },
     {
       path: '/*',
       redirect:"/home"
