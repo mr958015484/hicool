@@ -10,6 +10,7 @@ import axios from "axios"
 import './assets/font_log/iconfont.css'  //字体图标
 
 
+
 Vue.prototype.axios=axios
 
 Vue.config.productionTip = false
@@ -20,7 +21,7 @@ require("./mock")
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: { App},
   template: '<App/>',
   render: h => h(App),
   store

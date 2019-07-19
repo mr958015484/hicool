@@ -15,7 +15,7 @@ export default {
 
 <style scoped>
 .titbox{
-    width:2rem;
+    width:2.2rem;
     color:#fff;
     font-size:.14rem;
     text-align: center;

@@ -1,12 +1,11 @@
 <template>
   <div class="form-table">
     <div class="input-list">
-        <!-- <span class="icon-img iconfont icon-shouji-copy"></span> -->
-        <img src="static/img/login1.png" class="ico-image"/>
+        <span class="ico-image iconfont icon-mine-gray"></span>
         <input type="text" placeholder="请输入用户名" v-model="setname" >
     </div>
     <div class="input-list">
-        <span class="icon-img iconfont icon-shouji-copy"></span>
+        <span class="icon-img iconfont icon-youxiang"></span>
         <input type="text" placeholder="请输入邮箱" v-model="setemail">
     </div>
     <div class="input-list">

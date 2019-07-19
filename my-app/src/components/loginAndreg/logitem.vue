@@ -46,26 +46,27 @@ export default {
             var flpwd = false;//标记登陆输入的密码是否合法
             flpwd = regPwd.test(this.inpwd)?true:false;
 
-            if(this.ptext=="请输入密码"){   //登陆方式1：用户名/邮箱、密码登陆————数据库查找用户信息
 
-                if((flemail || flname) && flpwd){ //将用户输入的登陆信息发送，在数据库查找匹配信息
+            if(this.ptext=="请输入密码"){   //登陆方式1：用户名/邮箱、密码登陆————数据库查找用户信息
+                if(this.inname==""||this.inpwd==""){
+                    this.$emit("logpao1",{tit:true,content:"请填写完整的登录信息"});
+                }else if((flemail || flname) && flpwd){ //将用户输入的登陆信息发送，在数据库查找匹配信息
                     var paramlog = new URLSearchParams();
-                    
-                    if(flemail){  //邮箱登陆
-                    paramlog.append("email",this.inname);
-                    paramlog.append("pwd",this.inpwd);
-                    console.log("邮箱登陆")
-                    }else { //用户名登录
-                    paramlog.append("uname",this.inname);
-                    paramlog.append("pwd",this.inpwd);   
-                    console.log("用户名登录")
-                    }
+                    paramlog.append("userin",this.inname);
+                    paramlog.append("pwd",this.inpwd);  
+                    // if(flemail){  //邮箱登陆
+                    // paramlog.append("email",this.inname);
+                    // paramlog.append("pwd",this.inpwd);
+                    // }else { //用户名登录
+                    // paramlog.append("uname",this.inname);
+                    // paramlog.append("pwd",this.inpwd);  
+                    // }
                     this.axios({
                         url:"",  //保存用户注册信息的地址！！！！！！！！！！！！！
                         method:"post",
                         data:paramlog
                     }).then((ok)=>{
-                        // 1.用户名或邮箱 与密码一致，登陆成功
+                        // 1.用户名或邮箱 与密码一致，登陆成功，登陆成功后将登陆状态保存到localStrong
                         // 2.用户名存在，密码不一致，密码有误
                         // 3.用户名不存在，邮箱或密码有错误，请重新输入
                     }) 

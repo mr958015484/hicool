@@ -12,16 +12,16 @@
       <div class="container">
           <!-- 子组件配合槽口实现切换 -->
         <Logitem v-if="lgway"  ptext="请输入验证码" ntext="请输入手机号" @logpao2="titfun">  
-          <span slot="slota" class="iconfont icon-shouji-copy"></span>
+          <span slot="slota" class="iconfont icon-phone"></span>
           <span slot="slotb" class="iconfont icon-yanzhengma"></span>
           <span slot="slotc" class="code-txt" v-if="code" @click="timefun()" >获取验证码</span>
           <input  v-else-if="timestr!=''" type="text" slot="slotc" class="code-txt inputbox"  v-model="timestr"/>
         </Logitem>
 
         <Logitem v-else ptext="请输入密码" ntext="请输入用户名/邮箱" :intype="str" @logpao1="titfun">  
-          <span slot="slota" class="iconfont icon-shouji-copy"></span>
+          <span slot="slota" class="iconfont icon-mine-gray"></span>
           <span slot="slotb" class="iconfont icon-mm"></span>
-          <span slot="slotc" class="iconfont icon-mimabukejian" v-if="icostyle" @click="changeIco()"></span>
+          <span slot="slotc" class="iconfont icon-mimabukejian1" v-if="icostyle" @click="changeIco()"></span>
           <span slot="slotc" class="iconfont icon-mimakejian" v-else @click="changeIco()"></span>
         </Logitem>
 
@@ -174,7 +174,10 @@ export default {
 .login-way p:last-child{
   text-align: right;
 }
-.container .icon-mimabukejian,.container .icon-mimakejian{
+.container .icon-mimabukejian1,.container .icon-mimakejian{
   color:#e0e0e0;
+}
+.icon-mimabukejian1{
+  font-size:.18rem;
 }
 </style>
