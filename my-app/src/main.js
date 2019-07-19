@@ -8,7 +8,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 import {store} from "./store/store"
 import axios from "axios"
 import './assets/font/iconfont.css'
-
+// 冯慧引入省市级联动的插件
+import VDistpicker from 'v-distpicker'
+Vue.component('v-distpicker', VDistpicker);
 
 Vue.prototype.axios=axios
 

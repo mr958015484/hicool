@@ -1,13 +1,17 @@
 <template>
     <div class="mine_body">
         <!-- 顶部棒 -->
-        <Topbar></Topbar>
+        <Topbar class="top_bar" word="个人中心"></Topbar>
         <!-- 没登录的时候的头部 -->
         <!-- <Notlogin></Notlogin> -->
         <Loginhead></Loginhead>
         <!-- 默认购物频道 -->
-        <Listbar class="first_list"　title="默认购物频道" word="男士MEN"></Listbar>
-        <Listbar title="我的订单" word="全部订单"></Listbar>
+        <Listbar class="first_list" title="默认购物频道" >
+            <span slot="contslot" >男士MEN</span>  
+        </Listbar>
+        <Listbar class="first_list" title="我的订单">
+             <span slot="contslot" >全部订单</span>
+        </Listbar>
        <div class="cont_list">
            <div class="icon_box">
                 <span class="iconfont icon-ziyuan iconimg iconimg1"></span>
@@ -75,11 +79,15 @@ export default {
 </script>
 
 <style scoped>
+.top_bar{
+    z-index: 10;
+}
 .mine_body{
     background:#f0f0f0;
 }
 .first_list{
     margin-bottom:.1rem;
+    padding-left:.15rem;
 }
 .mine_body .cont_list{
     display:-webkit-flex;
@@ -100,7 +108,7 @@ export default {
      text-align:center;
 }
 .icon_box{
-    width:33%;
+    width:33.3%;
 }
 .little_arrow{
         height:.1rem;

@@ -1,6 +1,8 @@
 <template>
     <div class="list_bar">
-        <span class="title">{{title}}</span><span class="word">{{word}}</span><span class="little_arrow"></span>
+        <span class="title">{{title}}</span>
+        <span  class="word"><slot name="contslot"></slot></span>
+        <span class="little_arrow"></span>
     </div>
 </template>
 <script>
@@ -13,16 +15,16 @@ export default {
 </script>
 <style scoped>
     .little_arrow{
-        height:.1rem;
-        width:.1rem;
+        height:.08rem;
+        width:.08rem;
         font-weight:900;
-        border-top:1px solid #e0e0e0;
-        border-right:1px solid #e0e0e0;
+        border-top:3px solid #e0e0e0;
+        border-right:3px solid #e0e0e0;
         -webkit-transform: rotate(45deg);
     }
     .list_bar {
         display:flex;
-        height:.36rem;
+        height:.46rem;
         background:white;
         -webkit-align-items: center;
     }
@@ -30,7 +32,6 @@ export default {
     .list_bar .title{
         font-size:14px;
         width:1.8rem;
-        padding-left:.15rem;
 
     }
     .list_bar .word{

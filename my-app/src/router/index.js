@@ -5,6 +5,9 @@ import Classify from "../pages/classify"
 import ShopCart from "../pages/shopCart"
 import Main from "../pages/main"
 import Guang from "../pages/guang"
+import Basicinfo from "../pages/basicinfo"
+import Location from "../pages/location"
+import Newaddress from "../pages/newaddress"
 
 Vue.use(Router)
 
@@ -13,7 +16,8 @@ export default new Router({
     {
       path:"/home",
       name:"Home",
-      component:Home
+      component:Home,
+      
     },
     {
       path:"/classify",
@@ -35,6 +39,22 @@ export default new Router({
       name:"Main",
       component:Main
     },
+    {
+      path:"/location",
+      name:"Location",
+      component:Location
+    },
+    {
+      path:"/basicinfo",
+      name:"Basicinfo",
+      component:Basicinfo,
+    },
+    {
+      path:"/newaddress",
+      name:"Newaddress",
+      component:Newaddress,
+    },
+    
     {
       path: '/*',
       redirect:"/home"
