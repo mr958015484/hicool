@@ -79,7 +79,7 @@ export default {
           //判断登陆状态1.未登录，踢到登陆界面
           //this.$router.push("/login");
           //2.登陆跳转至/myorder!!!!!!!!!!!!
-          this.$router.push("/myorder");
+          this.$router.push("/myorder/orderall");
       }
   }
 }
