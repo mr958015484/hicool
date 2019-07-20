@@ -4,18 +4,22 @@
          <router-view ></router-view>
           <Topbar class="top_bar" word="地址管理"></Topbar>
           <!-- 显示地址区域 -->
-          <ul class="address_area" v-if='bool' >
+          <ul class="address_area" v-if='textbool' >
                <li>
                    <p class="name"><span>{{textname}}</span><span>{{telphone}}</span></p>
                    <p class="add">{{area+address}}</p>
-                   <p class="del"> <img src="../../static/fayimg/write.png"> <img class="delbtn"　src="../../static/fayimg/delete.png"></p>
+                   <p class="del"> <img @click="gobacktowrite()" src="../../static/fayimg/write.png"> <img class="delbtn"　src="../../static/fayimg/delete.png"></p>
                </li>
           </ul>
          
 
           <!-- 无地址的时候只显示 -->
           <div class="loc_manag_cont">
-                <div class="noloc_notice">
+              <!-- 写两个是为了解决上边地址栏出现时的margin-top的问题 -->
+                <div class="noloc_notice_no" v-if="textbool">
+                    为提高配送时效，请您尽量准确填写四级地址。
+                </div>
+                <div class="noloc_notice" v-else>
                     为提高配送时效，请您尽量准确填写四级地址。
                 </div>
                 <!-- 添加新地址 -->
@@ -31,32 +35,38 @@ import Topbar from "../components/mine/topbar"
 export default {
     data(){
         return {
-         bool:true
+         textbool:false,
         }
     },
     components:{
         Topbar,
     },
+    created() {
+        this.textbool=this.$route.query.bool
+    },
     // 转到修改地址的页面
     methods:{
         addaddress(){
             this.$router.push("/newaddress")
+        },
+        gobacktowrite(){
+            this.$router.push("/newaddress?status="+1)
         }
+
     },
 
      computed:{ 
        textname(){
-         
-           return this.$store.state.consignee
+           return this.$store.getters.getconsignee
        },
        telphone(){
-            return this.$store.state.phone
+            return this.$store.getters.getphone
        },
        area(){
-            return this.$store.state.area
+            return this.$store.getters.getarea
        },
         address(){
-            return this.$store.state.address
+            return this.$store.getters.getaddress
        }
        
     },
@@ -70,14 +80,17 @@ export default {
         background: #eee;
         padding-bottom:5.3rem;
     }
-    .noloc_notice{
-        margin-top:.525rem;
-        height:.42rem;
+    .loc_manag_cont .noloc_notice_no{
+       height:.42rem;
         text-align:center;
         line-height:.42rem;
         font-size:.14rem;
         color: #aeaeae;
         background:#eee;
+    }
+    .noloc_notice{
+        margin-top:.525rem;
+       
     }
     .add_loc{
         height:.53rem;
