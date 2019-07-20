@@ -2,15 +2,15 @@
   <div class="form-table">
     <div class="input-list">
         <span class="icon-img"><slot name="slota"></slot></span>
-        <input type="text" :placeholder="ntext" v-model="inname">
+        <input type="text" :placeholder="ntext" v-model="inname" @input="disableFun()">
     </div>
     <div class="input-list">
         <span class="icon-img"><slot name="slotb"></slot></span>
-        <input :type="intype" :placeholder="ptext" v-model="inpwd">
+        <input :type="intype" :placeholder="ptext" v-model="inpwd" @input="disableFun()">
         <span class="icon-tit"><slot name="slotc"></slot></span>
     </div>
      
-    <input type="button" value="登录" class="login-btn" @click="loginSubmit()">
+    <input type="button" value="登录" id="login-btn" :class="bool?'disbtn':'creatbtn'"  :disabled="bool"  @click="loginSubmit()">
   </div>
 </template>
 
@@ -19,6 +19,8 @@
 export default {
     data(){
         return{
+            bool:true,
+            btnstyle:"disabledbtn",
             inname:"",  //登陆输入的邮箱或用户名
             inpwd:""     //登陆输入的邮箱验证码或密码
         }
@@ -29,6 +31,12 @@ export default {
         intype:String  //密码框类型 type=text 密码可见，type=password 密码不可见
     },
     methods: {
+        disableFun(){
+            if(this.inname!="" && this.inpwd!=""){
+                this.bool=false;
+                console.log(this.bool);
+            }
+        },
         loginSubmit(){
             //console.log(this.ptext);
             //1.校验邮箱
@@ -54,21 +62,22 @@ export default {
                     var paramlog = new URLSearchParams();
                     paramlog.append("userin",this.inname);
                     paramlog.append("pwd",this.inpwd);  
-                    // if(flemail){  //邮箱登陆
-                    // paramlog.append("email",this.inname);
-                    // paramlog.append("pwd",this.inpwd);
-                    // }else { //用户名登录
-                    // paramlog.append("uname",this.inname);
-                    // paramlog.append("pwd",this.inpwd);  
-                    // }
+                    
                     this.axios({
                         url:"",  //保存用户注册信息的地址！！！！！！！！！！！！！
                         method:"post",
                         data:paramlog
                     }).then((ok)=>{
+                        if(ok.data==1){
+                            this.$emit("logpao1",{tit:true,content:"登陆成功"});
+                        }else if(ok.data==0){
+                            this.$emit("logpao1",{tit:true,content:"账号或密码有错误，请重新输入"});
+                        }else if(ok.data==2){
+                            this.$emit("logpao1",{tit:true,content:"非法请求，用户处于禁用状态"});
+                        }
                         // 1.用户名或邮箱 与密码一致，登陆成功，登陆成功后将登陆状态保存到localStrong
-                        // 2.用户名存在，密码不一致，密码有误
-                        // 3.用户名不存在，邮箱或密码有错误，请重新输入
+                        // 2.用户禁用
+                        // 0.用户名不存在，邮箱或密码有错误，请重新输入//用户名存在，密码不一致，密码有误
                     }) 
                 }else if(!flpwd){
                     this.$emit("logpao1",{tit:true,content:"账号或密码有错误，请重新输入"});
@@ -110,7 +119,7 @@ export default {
     position:absolute;
     right:0;
 }
-.login-btn{
+#login-btn{
     display:block;
     margin-top:.6rem;
     width:100%;
@@ -118,10 +127,15 @@ export default {
     color:#fff;
     line-height:.36rem;
     text-align: center;
-    background-color: #b0b0b0;
     border:none;
     outline:none;
     border-radius:.03rem;
+}
+.disbtn{
+    background-color: #d4d1d1;
+}
+.creatbtn{
+    background-color: #444;
 }
 .iconfont{
   color:#444;

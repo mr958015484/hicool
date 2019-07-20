@@ -92,6 +92,7 @@ export default {
 }
 .icon-mimabukejian1{
   font-size:.18rem;
+  bottom:.04rem;
 }
  /* 底部信息 */
 .bottom-part{
