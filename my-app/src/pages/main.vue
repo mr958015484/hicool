@@ -3,8 +3,10 @@
         <!-- 顶部棒 -->
         <Topbar class="top_bar" word="个人中心"></Topbar>
         <!-- 没登录的时候的头部 -->
-        <Notlogin></Notlogin>
-        <!-- <Loginhead></Loginhead> -->
+        <!-- 登陆按钮  -->
+        <!-- <Notlogin></Notlogin>   -->
+        <!-- 个人信息按钮 -->
+        <Loginhead></Loginhead>
         <!-- 默认购物频道 -->
         <Listbar class="first_list" title="默认购物频道" >
             <span slot="contslot" >男士MEN</span>  

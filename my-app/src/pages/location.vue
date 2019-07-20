@@ -81,7 +81,7 @@ export default {
         padding-bottom:5.3rem;
     }
     .loc_manag_cont .noloc_notice_no{
-       height:.42rem;
+        height:.42rem;
         text-align:center;
         line-height:.42rem;
         font-size:.14rem;
@@ -90,6 +90,12 @@ export default {
     }
     .noloc_notice{
         margin-top:.525rem;
+        height:.42rem;
+        text-align:center;
+        line-height:.42rem;
+        font-size:.14rem;
+        color: #aeaeae;
+        background:#eee;
        
     }
     .add_loc{
