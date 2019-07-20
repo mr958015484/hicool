@@ -46,10 +46,14 @@ export default {
         city:'',
        addInp :false,
         mask:false,
+        status:""
          }
      },
      components:{
           VDistpicker,
+     },
+     created(){
+         this.status=this.$route.query.status
      },
     methods:{
         toAddress(){
@@ -129,7 +133,7 @@ export default {
             }
             else{
                 this.$store.commit("textup",{"textname":this.textval,"phone":this.phone,"area":this.city,"address":this.address,"contbool":this.contbool})
-                this.$router.push("/location")
+                this.$router.push("/location?bool="+true)
             }
             
     
