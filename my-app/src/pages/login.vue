@@ -22,7 +22,7 @@
           <span slot="slota" class="iconfont icon-mine-gray"></span>
           <span slot="slotb" class="iconfont icon-mm"></span>
           <span slot="slotc" class="iconfont icon-mimabukejian1" v-if="icostyle" @click="changeIco()"></span>
-          <span slot="slotc" class="iconfont icon-mimakejian" v-else @click="changeIco()"></span>
+          <span slot="slotc" class="iconfont icon-mimakejian1" v-else @click="changeIco()"></span>
         </Logitem>
 
 
@@ -174,7 +174,7 @@ export default {
 .login-way p:last-child{
   text-align: right;
 }
-.container .icon-mimabukejian1,.container .icon-mimakejian{
+.container .icon-mimabukejian1,.container .icon-mimakejian1{
   color:#e0e0e0;
 }
 .icon-mimabukejian1{

@@ -8,7 +8,7 @@
     <!-- 注册信息部分 -->
     <Regitem :mtype="str" @zipao="funtit">
         <span v-if='icostyle' slot="slota" class="iconfont icon-mimabukejian1" @click="changeIco()"></span>
-        <span v-else slot="slota" class="iconfont icon-mimakejian" @click="changeIco()"></span>
+        <span v-else slot="slota" class="iconfont icon-mimakejian1" @click="changeIco()"></span>
     </Regitem>
     <!-- 底部信息 -->
     <div class="bottom-part">
@@ -85,7 +85,7 @@ export default {
   width:56%;
   font-size:.17rem;
 }
-.icon-mimabukejian1,.icon-mimakejian{
+.icon-mimabukejian1,.icon-mimakejian1{
   position:absolute;
   right:.1rem;
   bottom:.06rem;
@@ -109,7 +109,7 @@ export default {
   margin-right: .1rem;
   text-decoration:underline;
 }
-.container .icon-mimabukejian1,.container .icon-mimakejian{
+.container .icon-mimabukejian1,.container .icon-mimakejian1{
   color:#e0e0e0;
 }
 </style>
