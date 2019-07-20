@@ -1,7 +1,8 @@
 <template>
     <div class="container">
-        <Topbar word="我的订单" type="myorder"></Topbar>
+        <Topbar word="我的订单" type="myorder" class="topbar"></Topbar>
         <div class="main-content">
+            <Orderwarn></Orderwarn>
             <div class="router-menu">
                 <router-link to="/myorder/orderall" class="item">全部</router-link>
                 <router-link to="/myorder/orderpay" class="item">待付款</router-link>
@@ -10,19 +11,19 @@
             </div>
             <router-view ></router-view>
         </div>
-         
+        <Gobacktop></Gobacktop>
         
     </div>
 </template>
 <script>
 import Topbar from "../topbar"
+import Gobacktop from "../gobacktop"
+import Orderwarn from "./orderall/orderlist/orderwarn"
 export default {
     components:{
-        Topbar
-    },
-    created(){
-        //接收路由传参过来的登陆状态,未登录踢到登陆页面
-        
+        Topbar,
+        Gobacktop,
+        Orderwarn
     }
 }
 </script>
@@ -53,5 +54,8 @@ export default {
 }
 .router-link-active{
     color:#333;
+}
+.topbar{
+    z-index:100;
 }
 </style>

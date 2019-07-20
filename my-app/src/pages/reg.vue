@@ -78,7 +78,7 @@ export default {
 .top-title i{
   display:block;
   width:44%;
-  font-size:.21rem;
+  font-size:.23rem;
 }
 .top-title span{
   display:block;

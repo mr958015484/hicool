@@ -8,14 +8,7 @@ import Guang from "../pages/guang"
 import Basicinfo from "../pages/basicinfo"
 import Location from "../pages/location"
 import Newaddress from "../pages/newaddress"
-import Login from "../pages/login"
-import Reg from "../pages/reg"
 
-import Myorder from "../components/mine/myorder/myorder"
-import Orderall from "../components/mine/myorder/orderall/orderall"
-import Orderpay from "../components/mine/myorder/orderall/orderpay"
-import Orderdeliver from "../components/mine/myorder/orderall/orderdeliver"
-import Ordertake from "../components/mine/myorder/orderall/ordertake"
 
 Vue.use(Router)
 
@@ -65,33 +58,33 @@ export default new Router({
     {
       path:"/login",
       name:"Login",
-      component:Login
+      component:resolve => require(['../pages/login'],resolve)
     },
     {
       path:"/reg",
       name:"Reg",
-      component:Reg
+      component:resolve => require(['../pages/reg'],resolve)
     },
     {
       path:"/myorder",
       name:"Myorder",
-      component:Myorder,
+      component:resolve => require(['../components/mine/myorder/myorder'],resolve),
       children:[
         {path:"/myorder/orderall",
         name:"Orderall",
-        component:Orderall
+        component:resolve => require(['../components/mine/myorder/orderall/orderall'],resolve),
         },
         {path:"/myorder/orderpay",
         name:"Orderpay",
-        component:Orderpay
+        component:resolve => require(['../components/mine/myorder/orderall/orderpay'],resolve),
         },
         {path:"/myorder/orderdeliver",
         name:"Orderdeliver",
-        component:Orderdeliver
+        component:resolve => require(['../components/mine/myorder/orderall/orderdeliver'],resolve),
         },
         {path:"/myorder/ordertake",
         name:"Ordertake",
-        component:Ordertake
+        component:resolve => require(['../components/mine/myorder/orderall/ordertake'],resolve),
         },
         {path:"/myorder/*",
         redirect:"/myorder/orderall"

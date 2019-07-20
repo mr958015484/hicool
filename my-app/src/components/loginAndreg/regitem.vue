@@ -2,19 +2,19 @@
   <div class="form-table">
     <div class="input-list">
         <span class="ico-image iconfont icon-mine-gray"></span>
-        <input type="text" placeholder="请输入用户名" v-model="setname" >
+        <input type="text" placeholder="请输入用户名" v-model="setname" @input="disFun()" >
     </div>
     <div class="input-list">
         <span class="icon-img iconfont icon-youxiang"></span>
-        <input type="text" placeholder="请输入邮箱" v-model="setemail">
+        <input type="text" placeholder="请输入邮箱" v-model="setemail" @input="disFun()">
     </div>
     <div class="input-list">
         <span class="icon-img iconfont icon-mm"></span>
-        <input :type="mtype" placeholder="请输入密码" v-model="setpwd">
+        <input :type="mtype" placeholder="请输入密码" v-model="setpwd" @input="disFun()">
         <span class="icon-tit"><slot name="slota"></slot></span>
     </div>
 
-    <input type="button" value="注册" class="reg-btn" @click="regSubmit()">
+    <input type="button" value="注册" id="reg-btn" :class="bool?'disbtn':'actbtn'"  :disabled="bool"  @click="regSubmit()">
   </div>
 </template>
 
@@ -23,7 +23,7 @@
 export default {
   data(){
     return {
-      // titbool:false
+      bool:true,  //控制注册按钮禁用
       setname:"",   //用户名
       setemail:"",  //邮箱
       setpwd:"",    //密码
@@ -33,6 +33,11 @@ export default {
       mtype:String
     },
   methods:{
+    disFun(){
+      if(this.setname!="" && this.setemail!="" && this.setpwd!=""){
+          this.bool=false;
+            }
+    },
     regSubmit(){
       //1.用户名校验
         //以英文字母开头，只能包含英文字母、数字6-20位
@@ -68,14 +73,19 @@ export default {
         this.$emit("zipao",{tit:true,content:"密码需包含字母和数字，且长度在6~20个字符之间"});
       }else{  //用户名、邮箱、密码格式都无误后，发送给服务器，存储用户注册信息
             var paramreg = new URLSearchParams();
-            paramreg.append("uname",this.setname);
-            paramreg.append("email",this.setemail);
-            paramreg.append("pwd",this.setpwd);
+            paramreg.append("userName",this.setname);
+            paramreg.append("userEmail",this.setemail);
+            paramreg.append("userPwd",this.setpwd);
             this.axios({
-              url:"",  //保存用户注册信息的地址！！！！！！！！！！！！！
+              url:"http://192.168.43.224:8080/user/registerUser",  //保存用户注册信息的地址！！！！！！！！！！！！！
               method:"post",
               data:paramreg
             }).then((regstr)=>{
+                if(regstr.data==1){
+                  this.$emit("zipao",{tit:true,content:"恭喜您！注册成功，请前往邮箱激活"});
+                }else if(regstr.data==0){
+                  this.$emit("zipao",{tit:true,content:"此用户名太受欢迎，请重新设置"});
+                }
               //1.注册成功---this.$emit("zipao",{tit:true,content:"请前往邮箱激活后登陆"});
               //2.用户名已存在，注册失败
             })
@@ -112,7 +122,7 @@ export default {
   width:4.5%;
   margin-right:.19rem;
 }
-.reg-btn{
+#reg-btn{
     display:block;
     margin-top:.6rem;
     width:100%;
@@ -120,10 +130,15 @@ export default {
     color:#fff;
     line-height:.36rem;
     text-align: center;
-    background-color: #b0b0b0;
     border:none;
     outline:none;
     border-radius:.03rem;
+}
+.disbtn{
+  background-color: #b0b0b0;
+}
+.actbtn{
+  background-color: #444;
 }
 .iconfont{
   color:#444;

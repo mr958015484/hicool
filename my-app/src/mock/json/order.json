@@ -1,0 +1,44 @@
+{
+    "orderlist":[
+    { "id":"1",
+    "ordercode":"60027525973",
+    "orderstatus":"已取消",
+    "products":[ 
+        {"productid":"0123","name":"Dickies 箱包 字母学院双肩包","color":"黑色","size":"F","saleprice":128.91,"bargprice":210.34,"num":1,"imgsrc":"static/imgorder/2.jpg"},
+        {"productid":"0133","name":"TEEBACCO 字母印花短袖T恤","color":"白色","size":"F","saleprice":131.90,"bargprice":210.34,"num":2,"imgsrc":"static/imgorder/3.jpg"}
+        ],
+    "totalnum":"3",
+    "totalprice":"391.8"
+    },
+    {"id":"2",
+    "ordercode":"60027525894",
+    "orderstatus":"待付款",
+    "products":[ 
+        {"productid":"0141","name":"VANS Old Skool 36 DX 安纳海姆","color":"绿色/蓝色","size":"38 1/2码","saleprice":299.00,"bargprice":210.34,"num":1,"imgsrc":"static/imgorder/4.jpg"},
+        {"productid":"0148","name":"Boy x QQ合作款 青蛙刺绣短袖T恤","color":"紫色","size":"L","saleprice":141.90,"bargprice":219.00,"num":1,"imgsrc":"static/imgorder/5.jpg"}
+        ],
+    "totalnum":"2",
+    "totalprice":"351.9"
+    },
+    {"id":"3",
+        "ordercode":"5896525894",
+        "orderstatus":"待发货",
+        "products":[ 
+            {"productid":"0241","name":"曼城城民 x YOHO! 曼城亚洲行2019城民特别款纪念T恤","color":"绿色/蓝色","size":"M","saleprice":299.00,"bargprice":210.34,"num":1,"imgsrc":"static/imgorder/4.jpg"},
+            {"productid":"0248","name":"Hanes x karla The Original 纯白色T恤","color":"紫色","size":"L","saleprice":141.90,"bargprice":219.00,"num":1,"imgsrc":"static/imgorder/5.jpg"}
+            ],
+        "totalnum":"2",
+        "totalprice":"258.9"
+    },
+    {"id":"4",
+        "ordercode":"578925894",
+        "orderstatus":"待发货",
+        "products":[ 
+            {"productid":"0341","name":"RED CHARCOAL x  Staple 黑灰麂皮绒拼接夹克","color":"绿色/蓝色","size":"M","saleprice":299.00,"bargprice":210.34,"num":1,"imgsrc":"static/imgorder/4.jpg"},
+            {"productid":"0321","name":"GUESS×Hello Kitty亚洲联名限量胶囊系列  男女款LOGO印花短袖T恤","color":"紫色","size":"L","saleprice":141.90,"bargprice":219.00,"num":1,"imgsrc":"static/imgorder/5.jpg"}
+            ],
+        "totalnum":"2",
+        "totalprice":"479.9"
+    }
+    ]
+}

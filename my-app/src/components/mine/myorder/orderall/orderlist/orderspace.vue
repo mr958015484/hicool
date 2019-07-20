@@ -1,6 +1,6 @@
 <template>
     <div class="space-content">
-        <img src="static/img/order.jpg" width=100px;>
+        <img src="static/img/order.jpg"  class="orderimage">
         <p class="order-tit">你还没有订单 !</p>
         <a href="#/home" class="route-link">随便逛逛</a>
     </div>
@@ -19,12 +19,13 @@ export default {
     flex-direction: column;
     align-items: center;
     padding-top:.2rem;
+    padding-bottom:.84rem;
 }
 .order-tit{
     font-size:.14rem;
     color:#444;
     padding-top:.1rem;
-    padding-bottom: .5rem;
+    padding-bottom: .4rem;
 }
 .route-link{
     display:block;
@@ -36,5 +37,8 @@ export default {
     color:#fff;
     text-align: center;
 }
-
+.orderimage{
+    display:block;
+    width:1rem;
+}
 </style>

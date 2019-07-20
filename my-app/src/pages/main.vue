@@ -3,10 +3,10 @@
         <!-- 顶部棒 -->
         <Topbar class="top_bar" word="个人中心"></Topbar>
         <!-- 没登录的时候的头部 -->
+         <!-- 个人信息按钮 -->
+        <Loginhead v-if="status"></Loginhead>
         <!-- 登陆按钮  -->
-        <!-- <Notlogin></Notlogin>   -->
-        <!-- 个人信息按钮 -->
-        <Loginhead></Loginhead>
+        <Notlogin v-else ></Notlogin>  
         <!-- 默认购物频道 -->
         <Listbar class="first_list" title="默认购物频道" >
             <span slot="contslot" >男士MEN</span>  
@@ -69,6 +69,11 @@ import Loginhead from "../components/mine/loginhead"
 import Listbar from "../components/mine/listbar"
 
 export default {
+    data(){
+        return{
+            status:true
+        }
+    },
     components: {
       BottomBar,
       Topbar,
@@ -76,12 +81,20 @@ export default {
       Loginhead,
       Listbar,
   },
+  created(){
+      this.status=localStorage.getItem("loginStatus");
+  },
   methods:{
       toOrder(){
-          //判断登陆状态1.未登录，踢到登陆界面
+            //判断登陆状态1.未登录，踢到登陆界面
           //this.$router.push("/login");
           //2.登陆跳转至/myorder!!!!!!!!!!!!
-          this.$router.push("/myorder/orderall");
+        var t= localStorage.getItem("loginStatus");
+          if(t){
+           this.$router.push("/myorder/orderall");
+          }else{
+            this.$router.push("/login");
+          }
       }
   }
 }

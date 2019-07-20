@@ -17,14 +17,15 @@
                     </div>
                     <div class="pricenum">
                         <p>￥ {{k.saleprice}}
-                            <span style="text-decoration:line-through;color:#999;display:block;">￥ {{k.bargprice}}</span>
+                            <span class="orgin-price">￥ {{k.bargprice}}</span>
                         </p>
                         <p class="num">{{k.num}}</p>
                     </div>
                 </div>
             </div>
             <div class="bottom-title">
-                共{{v.totalnum}}件商品 &nbsp;实付<span style="color:red">￥{{v.totalprice}}</span>
+                <span>共{{v.totalnum}}件商品  实付</span>
+                <span class="price-total">￥{{v.totalprice}}</span>
             </div>
             <div class="footer-btn">
                 <p>删除订单</p>
@@ -95,6 +96,11 @@ export default {
     font-size: .14rem;
     line-height: .22rem;
 }
+.orgin-price{
+    text-decoration:line-through;
+    color:#999;
+    display:block;
+}
 .pricenum p{
     padding-bottom:.1rem;
 }
@@ -107,6 +113,14 @@ export default {
     text-align: right;
     line-height:.5rem;
     border-bottom:.01rem solid #e0e0e0;
+    display:-webkit-flex;
+    -webkit-justify-content: flex-end;
+}
+.bottom-title span{
+    display: block;
+}
+.price-total{
+    color:red
 }
 .footer-btn{
     font-size:.13rem; 

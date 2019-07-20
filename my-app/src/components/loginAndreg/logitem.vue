@@ -10,7 +10,7 @@
         <span class="icon-tit"><slot name="slotc"></slot></span>
     </div>
      
-    <input type="button" value="登录" id="login-btn" :class="bool?'disbtn':'creatbtn'"  :disabled="bool"  @click="loginSubmit()">
+    <input type="button" value="登录" id="login-btn" :class="bool?'disbtn':'actbtn'"  :disabled="bool"  @click="loginSubmit()">
   </div>
 </template>
 
@@ -19,8 +19,7 @@
 export default {
     data(){
         return{
-            bool:true,
-            btnstyle:"disabledbtn",
+            bool:true,  ////控制登陆按钮禁用
             inname:"",  //登陆输入的邮箱或用户名
             inpwd:""     //登陆输入的邮箱验证码或密码
         }
@@ -34,7 +33,6 @@ export default {
         disableFun(){
             if(this.inname!="" && this.inpwd!=""){
                 this.bool=false;
-                console.log(this.bool);
             }
         },
         loginSubmit(){
@@ -60,16 +58,20 @@ export default {
                     this.$emit("logpao1",{tit:true,content:"请填写完整的登录信息"});
                 }else if((flemail || flname) && flpwd){ //将用户输入的登陆信息发送，在数据库查找匹配信息
                     var paramlog = new URLSearchParams();
-                    paramlog.append("userin",this.inname);
-                    paramlog.append("pwd",this.inpwd);  
+                    paramlog.append("userEmail",this.inname);
+                    paramlog.append("userPwd",this.inpwd);  
                     
                     this.axios({
-                        url:"",  //保存用户注册信息的地址！！！！！！！！！！！！！
+                        url:"http://192.168.43.224:8080/user/loginUser",  //保存用户注册信息的地址！！！！！！！！！！！！！
                         method:"post",
                         data:paramlog
                     }).then((ok)=>{
                         if(ok.data==1){
+                            //登录成功将登录状态，用户id存在本地localStrong中
+                            window.localStorage.setItem("loginStatus",true);
+                            window.localStorage.setItem("userId",ok.data.userid);
                             this.$emit("logpao1",{tit:true,content:"登陆成功"});
+                            this.$router.go(-1); //登陆成功回退
                         }else if(ok.data==0){
                             this.$emit("logpao1",{tit:true,content:"账号或密码有错误，请重新输入"});
                         }else if(ok.data==2){
@@ -132,9 +134,9 @@ export default {
     border-radius:.03rem;
 }
 .disbtn{
-    background-color: #d4d1d1;
+    background-color: #b0b0b0;
 }
-.creatbtn{
+.actbtn{
     background-color: #444;
 }
 .iconfont{

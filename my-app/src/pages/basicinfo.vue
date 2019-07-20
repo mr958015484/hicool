@@ -40,19 +40,7 @@
                
       </div>
 
-       <!-- 退出，回到顶部  -->
-       
-       <div class="go_top">
-           Hi,
-           <span class="niname"> 昵称</span>
-            <span class="goback" @click="goback()">退出</span> 
-            <span class="go_to_top" @click="backTop()">回到顶部</span> 
-            <span class="toparrow"></span>
-       </div>
-       <!-- footer -->
-       <footer class="foot"> 
-        CopyRight©2007-2019 南京新与力文化传播有限公司
-       </footer>
+        <Gobacktop></Gobacktop>
        
     </div>
 </template>
@@ -60,35 +48,15 @@
 import Topbar from "../components/mine/topbar"
 import BottomBar from "../components/bottomBar/bottomBar"
 import Listbar from "../components/mine/listbar"
+import Gobacktop from "../components/mine/gobacktop"
 export default {
     components:{
         Topbar,
-      Listbar,
+        Listbar,
        BottomBar,
+       Gobacktop
     },
-//     mounted () { 
-//     window.addEventListener('scroll', this.scrollToTop)
-//    },
-    // destroyed () {
-    // window.removeEventListener('scroll', this.scrollToTop)
-    // },
- 
 methods: {
-  // 点击图片回到顶部方法，加计时器是为了过渡顺滑
-  backTop () {
-      let that = this
-      let timer = setInterval(() => {
-        let ispeed = Math.floor(-that.scrollTop / 5)
-        document.documentElement.scrollTop = document.body.scrollTop = that.scrollTop + ispeed
-        if (that.scrollTop === 0) {
-          clearInterval(timer)
-        }
-      }, 16)
-    },
-
-    goback(){
-        this.$router.push("/login")
-    },
     funlocat(){
         this.$router.push("/location")
     }
@@ -128,6 +96,7 @@ methods: {
     }
     .locat{
           padding-left:.15rem;
+          border-bottom:0;
     }
     .leftdis{
         margin-left:1.2rem;
@@ -165,5 +134,6 @@ methods: {
         border-left:3px solid black;
         -webkit-transform: rotate(45deg);
   }
+
 </style>
 
