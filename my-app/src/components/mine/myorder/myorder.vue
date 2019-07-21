@@ -32,6 +32,7 @@ export default {
 .container{
     margin-top:.5rem;
     background:#f0f0f0;
+    position:relative;
 }
 .main-content{
     display:-webkit-flex;

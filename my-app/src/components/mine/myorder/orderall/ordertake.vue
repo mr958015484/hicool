@@ -2,7 +2,7 @@
     <div  class="outer-content">
         <!-- 待收货 -->
        <Orderitem v-if="ordermun" :ordearr="listtake" ></Orderitem>
-        <Orderspace v-else>></Orderspace>
+        <Orderspace v-else></Orderspace>
     </div>
 </template>
 <script>
@@ -49,4 +49,6 @@ export default {
 .outer-content{
     background:#fff;
 }
+
+
 </style>

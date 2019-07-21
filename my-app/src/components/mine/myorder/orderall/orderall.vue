@@ -1,7 +1,7 @@
 <template>
     <div  class="outer-content">
-         <Orderitem v-if="ordermun" :ordearr="list" ></Orderitem>
-         <Orderspace v-else ></Orderspace>
+         <Orderitem v-if="ordermun" :ordearr="list"></Orderitem>
+         <Orderspace v-else></Orderspace>
     </div>
 </template>
 <script>

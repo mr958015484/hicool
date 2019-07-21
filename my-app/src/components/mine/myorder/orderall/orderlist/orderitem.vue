@@ -28,17 +28,44 @@
                 <span class="price-total">￥{{v.totalprice}}</span>
             </div>
             <div class="footer-btn">
-                <p>删除订单</p>
+                <p @click="delfun(i)" :ref="v.ordercode">删除订单</p>
                 <p>再次购买</p>
             </div>
         </div>
+    <!-- <Delorder :show="delbool"   @delpao="changeFun"></Delorder> -->
     </div>
 </template>
 <script>
+import Delorder from "./delorder"
 export default {
+    data(){
+        return{
+            delbool:false, //控制弹出框
+            // isdelet:false
+        }
+    },
    props:{
        ordearr:Array
-   }
+   },
+   components:{
+       Delorder
+   },
+   methods:{
+       delfun(num){
+           this. delbool=true;
+           //console.log("aa",this. delbool);
+       },
+       changeFun(val){
+           console.log(val);
+            this. delbool=!val.style;
+            // this.isdelet = val.isdel;
+            if(val.isdel){ //确定删除 
+
+            console.log(this.$refs);
+            }
+       }
+    },
+
 }
 </script>
 

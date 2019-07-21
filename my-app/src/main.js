@@ -12,6 +12,7 @@ import './assets/font/iconfont.css'
 import VDistpicker from 'v-distpicker'
 Vue.component('v-distpicker', VDistpicker);
 import './assets/font_log/iconfont.css'  //字体图标
+import '../node_modules/vue/dist/vue.min.js'
 
 
 Vue.prototype.axios=axios
