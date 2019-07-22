@@ -32,7 +32,7 @@
                 <p>再次购买</p>
             </div>
         </div>
-    <!-- <Delorder :show="delbool"   @delpao="changeFun"></Delorder> -->
+    <Delorder :show="delbool"   @delpao="changeFun"></Delorder>
     </div>
 </template>
 <script>
@@ -61,7 +61,7 @@ export default {
             // this.isdelet = val.isdel;
             if(val.isdel){ //确定删除 
 
-            console.log(this.$refs);
+            //console.log(this.$refs);!!!!!!!!!!!!!!!!!!!!!!!!!!删除商品
             }
        }
     },
